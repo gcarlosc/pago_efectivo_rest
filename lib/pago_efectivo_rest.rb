@@ -1,6 +1,6 @@
 # require "pago_efectivo_rest/version"
-require 'json'
 require 'rest-client'
+require 'json'
 
 module PagoEfectivoRest
   class Client

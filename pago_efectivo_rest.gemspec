@@ -21,4 +21,5 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_runtime_dependency "rest-client"
+  spec.add_development_dependency "json"
 end
