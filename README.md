@@ -21,23 +21,26 @@ Or install it yourself as:
     $ gem install pago_efectivo_rest
 
 ## Usage
+To use this gem you need a service code and keys provided by pago efectivo.
 
-TODO: Write usage instructions here
+```ruby
+require 'pago_efectivo_rest'
 
-## Development
+pago_efectivo = PagoEfectivoRest::Client.new api_server:, code_service:, access_key:, secret_key:
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Generate auth token
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+auth_token = pago_efectivo.generate_auth_token
+```
 
-## Contributing
+Generate CIP
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/pago_efectivo_rest. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+```ruby
+pago_efectivo.generate_cip token: auth_token, currency: 'PEN', amount: '10.50', transaction: 'COD0001', expire_at: '2019-12-24T23:59:59-0500', client_email: 'client@email.com', admin_email: 'admin@email.com', phone: '977123456', phone_code: '+51'
+```
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the PagoEfectivoRest project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/pago_efectivo_rest/blob/master/CODE_OF_CONDUCT.md).
