@@ -1,4 +1,5 @@
 # require "pago_efectivo_rest/version"
+require 'json'
 require 'rest-client'
 
 module PagoEfectivoRest
