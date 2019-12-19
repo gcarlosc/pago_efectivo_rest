@@ -14,10 +14,6 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install pago_efectivo_rest
-
 ## Usage
 To use this gem you need a service code and keys provided by pago efectivo.
 
