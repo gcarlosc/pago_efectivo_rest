@@ -32,7 +32,7 @@ auth_token = pago_efectivo.generate_auth_token
 Generate CIP
 
 ```ruby
-pago_efectivo.generate_cip token: auth_token, currency: 'PEN', amount: '10.50', transaction: 'COD0001', expire_at: '2019-12-24T23:59:59-0500', client_email: 'client@email.com', admin_email: 'admin@email.com', phone: '977123456', phone_code: '+51'
+pago_efectivo.generate_cip token: token, currency: 'PEN', amount: '10.50', transaction: 'COD0001', expire_at: '2019-12-24T23:59:59-0500', client_email: 'client@email.com', admin_email: 'admin@email.com', phone: '977123456', phone_code: '+51'
 ```
 
 ## License

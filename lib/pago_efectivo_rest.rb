@@ -12,7 +12,7 @@ module PagoEfectivoRest
     end
 
     def generate_auth_token
-      date = Time.zone.now.strftime('%FT%T%:z')
+      date = Time.now.strftime('%FT%T%:z')
       parameter = [@code_service.to_s, @access_key, @secret_key, date].join('.')
       param_hash = Digest::SHA256.hexdigest parameter
       params = {
@@ -24,7 +24,7 @@ module PagoEfectivoRest
 
       response = RestClient.post "#{@api_server}/v1/authorizations", params.to_json, { content_type: :json, accept: :json }
 
-      puts JSON.parse(response.body, symbolize_names: true)
+      # puts JSON.parse(response.body, symbolize_names: true)
       JSON.parse(response.body, symbolize_names: true)
     rescue => e
       puts JSON.parse(e.response, symbolize_names: true)
@@ -49,13 +49,13 @@ module PagoEfectivoRest
         "userCodeCountry": phone_code, # +51
         "serviceId": @code_service
       }
-      puts '----- params send -----'
-      puts params
+      # puts '----- params send -----'
+      # puts params
 
       response = RestClient.post "#{@api_server}/v1/cips", params.to_json, { content_type: :json, accept: :json, 'Authorization': "Bearer #{token}", 'Origin': 'web', 'Accept-Language': 'es-PE' }
 
-      puts '----- data received -----'
-      puts JSON.parse(response.body, symbolize_names: true)
+      # puts '----- data received -----'
+      # puts JSON.parse(response.body, symbolize_names: true)
       JSON.parse(response.body, symbolize_names: true)
     rescue => e
       puts '----- errors -----'
